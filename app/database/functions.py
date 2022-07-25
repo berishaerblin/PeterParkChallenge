@@ -23,7 +23,7 @@ def get_all(model):
         return {"data": "No data!"}, 403
 
 
-def add_instance(model, **kwargs):
+def add(model, **kwargs):
     if not kwargs.get("plate"):
         return json.dumps("Plate field in json is missing!"), 400
 

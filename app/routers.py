@@ -18,7 +18,7 @@ def fetch_plates():
 def add_plate():
     plate = request.form.get("plate")
     timestamp = datetime.now()
-    response = functions.add_instance(Licences, plate=plate, timestamp=timestamp)
+    response = functions.add(Licences, plate=plate, timestamp=timestamp)
     return response
 
 
