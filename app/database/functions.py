@@ -27,7 +27,7 @@ def add(model, **kwargs):
     if not kwargs.get("plate"):
         return json.dumps("Plate field in json is missing!"), 400
 
-    if not re.match(r'^[a-zA-Z]{1,3}-[a-zA-Z]{1,2}[1-9]{,4}$', kwargs.get("plate")):
+    if not re.match(r'^[a-zA-Z]{1,3}-[a-zA-Z]{1,2}[1-9]{1}\d{,3}$', kwargs.get("plate")):
         return json.dumps("Plate is not a valid German plate!"), 422
     else:
         instance = model(**kwargs)
