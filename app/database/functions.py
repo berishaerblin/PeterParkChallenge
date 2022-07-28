@@ -37,7 +37,6 @@ def add(model, **kwargs):
 
 
 def search_plate(key, levenshtein):
-    extension_helper()
     sql = text(f"SELECT REPLACE(plate, '-', ''), timestamp FROM licences WHERE levenshtein(plate, '{key}') = {levenshtein}")
     results = db.engine.execute(sql)
     response = []
@@ -51,11 +50,6 @@ def search_plate(key, levenshtein):
         return {key: response}, 200
     else:
         return{key: "No match!"}, 400
-
-
-def extension_helper():
-    extension = text("CREATE EXTENSION IF NOT EXISTS fuzzystrmatch;")
-    db.engine.execute(extension)
 
 
 def commit_changes():
